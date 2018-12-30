@@ -27,7 +27,8 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    'element-ui/lib/theme-chalk/index.css'
+    '~assets/css/myJD.css'
+    // 'element-ui/lib/theme-chalk/index.css'
   ],
 
   /*
@@ -59,7 +60,15 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      
+      config
+        .module
+        .rules
+        .push({
+          test: /\.(webp)$/i,
+          loaders: [
+            'file-loader?hash=sha512&digest=hex&name=[hash].[ext]'
+          ]
+        })
     }
   }
 }
